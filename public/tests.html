@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tests - Online Exam Portal</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="app-page">
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
+  <header class="portal-header portal-header-premium">
+    <div class="container portal-topbar">
+      <a href="/dashboard.html" class="brand brand-link" aria-label="Online Exam Portal">
+        <span class="brand-mark">ER</span>
+        <span class="brand-copy">
+          <strong class="brand-text">ExamRank Portal</strong>
+          <span class="brand-subtext">Available tests</span>
+        </span>
+      </a>
+
+      <div class="portal-actions">
+        <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+        <a href="/history.html" class="btn btn-secondary btn-sm">My Results</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container app-main" id="mainContent">
+    <section class="page-hero page-hero-tests">
+      <div class="page-hero-copy">
+        <span class="section-kicker">Test library</span>
+        <h1 id="pageTitle">Available Tests</h1>
+        <p id="pageSubtitle">Choose a test to begin your next timed attempt.</p>
+      </div>
+
+      <div class="page-hero-side">
+        <div class="micro-panel">
+          <span class="micro-label">Exam mode</span>
+          <strong>Focused and timed</strong>
+          <p>Each test is structured for quick access, cleaner reading, and faster execution.</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="alert" aria-live="polite"></div>
+
+    <section class="content-shell" aria-labelledby="testsGridTitle">
+      <div class="section-heading section-heading-row">
+        <div>
+          <span class="section-kicker">Tests</span>
+          <h2 id="testsGridTitle">Pick your next attempt</h2>
+        </div>
+      </div>
+
+      <div id="testsGrid" class="test-grid"></div>
+    </section>
+  </main>
+
+  <script src="/js/student-api.js"></script>
+  <script src="/js/tests.js"></script>
+</body>
+</html>

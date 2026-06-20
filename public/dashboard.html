@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard - ExamRank Portal</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="app-page">
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
+  <header class="portal-header portal-header-premium">
+    <div class="container portal-topbar">
+      <a href="/dashboard.html" class="brand brand-link" aria-label="Student dashboard">
+        <span class="brand-mark">ER</span>
+        <span class="brand-copy">
+          <strong class="brand-text">ExamRank Portal</strong>
+          <span class="brand-subtext">Student dashboard</span>
+        </span>
+      </a>
+
+      <div class="portal-actions">
+        <a href="/tests.html" class="btn btn-secondary btn-sm">All Tests</a>
+        <a href="/history.html" class="btn btn-secondary btn-sm">My Results</a>
+        <button class="btn btn-secondary btn-sm" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container app-main" id="mainContent">
+    <section class="page-hero page-hero-dashboard">
+      <div class="page-hero-copy">
+        <span class="section-kicker">Student workspace</span>
+        <h1 id="welcomeText">Welcome</h1>
+        <p>Choose a subject to view available tests and continue your practice journey.</p>
+      </div>
+
+      <div class="page-hero-side">
+        <div class="micro-panel">
+          <span class="micro-label">Next step</span>
+          <strong>Select a subject</strong>
+          <p>Each subject opens the tests available for attempt and review.</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="alert" aria-live="polite"></div>
+
+    <section class="content-shell" aria-labelledby="subjectGridTitle">
+      <div class="section-heading section-heading-row">
+        <div>
+          <span class="section-kicker">Subjects</span>
+          <h2 id="subjectGridTitle">Choose where to begin</h2>
+        </div>
+      </div>
+
+      <div id="subjectsGrid" class="subject-grid"></div>
+    </section>
+  </main>
+
+  <script src="/js/student-api.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

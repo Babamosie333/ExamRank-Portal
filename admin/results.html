@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View student results in the admin panel." />
+  <title>Results - Admin</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-app">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-head">
+        <a href="/admin/dashboard.html" class="admin-brand admin-brand-link">
+          <span class="admin-brand-mark">OE</span>
+          <span class="admin-brand-stack">
+            <strong>Admin Panel</strong>
+            <span>Exam operations</span>
+          </span>
+        </a>
+      </div>
+
+      <nav aria-label="Admin navigation" class="admin-nav">
+        <a href="/admin/dashboard.html">Dashboard</a>
+        <a href="/admin/subjects.html">Subjects</a>
+        <a href="/admin/tests.html">Tests</a>
+        <a href="/admin/questions.html">Questions</a>
+        <a href="/admin/import.html">Excel Import</a>
+        <a href="/admin/results.html" class="active">Results</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <p class="page-subtitle">Student performance data</p>
+          <h1>Student Results</h1>
+        </div>
+        <button class="btn btn-primary" id="exportBtn">Export CSV</button>
+      </header>
+
+      <section class="admin-page-hero admin-page-hero-tight">
+        <div class="admin-page-hero-copy">
+          <span class="admin-kicker">Result analytics</span>
+          <h2>Review submissions with quick filtering and clean scanning.</h2>
+          <p>Keep the results view compact so the most important data stays visible.</p>
+        </div>
+      </section>
+
+      <section class="admin-toolbar admin-toolbar-card results-toolbar" aria-label="Filters">
+        <div class="form-group filter-box">
+          <label for="subjectFilter">Subject</label>
+          <select id="subjectFilter" title="Select Subject">
+            <option value="">All</option>
+          </select>
+        </div>
+
+        <div class="form-group filter-box">
+          <label for="testFilter">Chapter</label>
+          <select id="testFilter" title="Select Chapter">
+            <option value="">All</option>
+          </select>
+        </div>
+
+        <div class="form-group filter-box">
+          <label for="passFilter">Pass/Fail</label>
+          <select id="passFilter">
+            <option value="">All</option>
+            <option value="true">Pass</option>
+            <option value="false">Fail</option>
+          </select>
+        </div>
+
+        <div class="form-group filter-box">
+          <label for="searchInput">Search</label>
+          <input type="search" id="searchInput" placeholder="Name or email" />
+        </div>
+
+        <div class="form-group filter-box">
+          <label for="fromDate">From</label>
+          <input type="date" id="fromDate" />
+        </div>
+
+        <div class="form-group filter-box">
+          <label for="toDate">To</label>
+          <input type="date" id="toDate" />
+        </div>
+      </section>
+
+      <section class="admin-section-card" aria-labelledby="resultsTableTitle">
+        <div class="section-heading section-heading-row">
+          <div>
+            <span class="admin-kicker">Submission table</span>
+            <h2 id="resultsTableTitle">All submissions</h2>
+          </div>
+          <p>Use the filters above to narrow the list.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Test</th>
+                <th>Score</th>
+                <th>%</th>
+                <th>Pass/Fail</th>
+                <th>Date</th>
+                <th>Report</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/admin/js/admin-api.js"></script>
+  <script src="/admin/js/results.js"></script>
+</body>
+</html>

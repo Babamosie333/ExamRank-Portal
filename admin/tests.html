@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manage tests in the admin panel." />
+  <title>Tests - Admin</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-app">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-head">
+        <a href="/admin/dashboard.html" class="admin-brand admin-brand-link">
+          <span class="admin-brand-mark">OE</span>
+          <span class="admin-brand-stack">
+            <strong>Admin Panel</strong>
+            <span>Exam operations</span>
+          </span>
+        </a>
+      </div>
+
+      <nav aria-label="Admin navigation" class="admin-nav">
+        <a href="/admin/dashboard.html">Dashboard</a>
+        <a href="/admin/subjects.html">Subjects</a>
+        <a href="/admin/tests.html" class="active">Tests</a>
+        <a href="/admin/questions.html">Questions</a>
+        <a href="/admin/import.html">Excel Import</a>
+        <a href="/admin/results.html">Results</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <p class="page-subtitle">Test management</p>
+          <h1>Tests</h1>
+        </div>
+
+        <button class="btn btn-primary" id="addBtn">Add Test</button>
+      </header>
+
+      <section class="admin-page-hero admin-page-hero-tight">
+        <div class="admin-page-hero-copy">
+          <span class="admin-kicker">Assessment setup</span>
+          <h2>Define the structure of each exam attempt.</h2>
+          <p>Configure titles, timing, marks, and subject linkage in one organized workflow.</p>
+        </div>
+      </section>
+
+      <div id="alert" aria-live="polite"></div>
+
+      <section class="admin-section-card" aria-labelledby="testsTableTitle">
+        <div class="section-heading section-heading-row">
+          <div>
+            <span class="admin-kicker">Test registry</span>
+            <h2 id="testsTableTitle">All tests</h2>
+          </div>
+          <p>Create and manage tests connected to the subject structure.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Subject</th>
+                <th>Duration</th>
+                <th>Questions</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <span class="admin-kicker">Test editor</span>
+          <h3 id="modalTitle">Add Test</h3>
+        </div>
+        <button type="button" class="modal-close" id="cancelBtn" aria-label="Close modal">×</button>
+      </div>
+
+      <form id="testForm">
+        <input type="hidden" id="testId" />
+
+        <div class="form-group">
+          <label for="subjectId">Subject</label>
+          <select id="subjectId" required></select>
+        </div>
+
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required placeholder="Enter test title" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" rows="2" placeholder="Optional test description"></textarea>
+        </div>
+
+        <div class="modal-grid modal-grid-3">
+          <div class="form-group">
+            <label for="durationMinutes">Duration (minutes)</label>
+            <input type="number" id="durationMinutes" min="1" value="30" required />
+          </div>
+
+          <div class="form-group">
+            <label for="totalMarks">Total Marks</label>
+            <input type="number" id="totalMarks" min="0" value="0" />
+          </div>
+
+          <div class="form-group">
+            <label for="passingMarks">Passing Marks</label>
+            <input type="number" id="passingMarks" min="0" value="0" />
+          </div>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label for="isActive">
+            <input type="checkbox" id="isActive" checked />
+            Active
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelBtnBottom">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/admin/js/admin-api.js"></script>
+  <script src="/admin/js/tests.js"></script>
+</body>
+</html>

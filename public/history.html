@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Results - Online Exam Portal</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="app-page">
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
+  <header class="portal-header portal-header-premium">
+    <div class="container portal-topbar">
+      <a href="/dashboard.html" class="brand brand-link" aria-label="My results">
+        <span class="brand-mark">ER</span>
+        <span class="brand-copy">
+          <strong class="brand-text">ExamRank Portal</strong>
+          <span class="brand-subtext">Result history</span>
+        </span>
+      </a>
+
+      <div class="portal-actions">
+        <a href="/dashboard.html" class="btn btn-secondary btn-sm">Dashboard</a>
+        <a href="/tests.html" class="btn btn-secondary btn-sm">Tests</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container app-main" id="mainContent">
+    <section class="page-hero page-hero-history">
+      <div class="page-hero-copy">
+        <span class="section-kicker">Past attempts</span>
+        <h1>Results History</h1>
+        <p>Review previous attempts and open any result to see the full answer breakdown.</p>
+      </div>
+    </section>
+
+    <div id="alert" aria-live="polite"></div>
+
+    <section class="content-shell" aria-labelledby="historyTitle">
+      <div class="section-heading section-heading-row">
+        <div>
+          <span class="section-kicker">Attempts</span>
+          <h2 id="historyTitle">Your exam history</h2>
+        </div>
+      </div>
+
+      <div id="historyList" class="history-list"></div>
+    </section>
+  </main>
+
+  <script src="/js/student-api.js"></script>
+  <script src="/js/history.js"></script>
+</body>
+</html>

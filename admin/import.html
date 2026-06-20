@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Import Excel questions into the admin panel." />
+  <title>Excel Import - Admin</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-app">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-head">
+        <a href="/admin/dashboard.html" class="admin-brand admin-brand-link">
+          <span class="admin-brand-mark">OE</span>
+          <span class="admin-brand-stack">
+            <strong>Admin Panel</strong>
+            <span>Exam operations</span>
+          </span>
+        </a>
+      </div>
+
+      <nav aria-label="Admin navigation" class="admin-nav">
+        <a href="/admin/dashboard.html">Dashboard</a>
+        <a href="/admin/subjects.html">Subjects</a>
+        <a href="/admin/tests.html">Tests</a>
+        <a href="/admin/questions.html">Questions</a>
+        <a href="/admin/import.html" class="active">Excel Import</a>
+        <a href="/admin/results.html">Results</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <p class="page-subtitle">Bulk question upload</p>
+          <h1>Excel Question Import</h1>
+        </div>
+      </header>
+
+      <section class="admin-page-hero admin-page-hero-tight">
+        <div class="admin-page-hero-copy">
+          <span class="admin-kicker">Import workflow</span>
+          <h2>Upload structured question sets faster.</h2>
+          <p>Use spreadsheet import to move large batches of questions into the platform with less manual effort.</p>
+        </div>
+      </section>
+
+      <div class="admin-grid-two">
+        <section class="admin-section-card import-info">
+          <div class="section-heading">
+            <span class="admin-kicker">Template guidance</span>
+            <h2>File format</h2>
+            <p>
+              Use an Excel file with these columns:
+              <strong>subject, test_title, question, option_a, option_b, option_c, option_d, correct_option, marks</strong>
+            </p>
+          </div>
+
+          <div class="import-steps">
+            <div class="import-step">
+              <span>1</span>
+              <p>Download the example file below to see the exact format and sample rows.</p>
+            </div>
+            <div class="import-step">
+              <span>2</span>
+              <p>Replace the sample rows with your own questions, keeping the same columns.</p>
+            </div>
+            <div class="import-step">
+              <span>3</span>
+              <p>Select your `.xlsx` or `.xls` file and upload it.</p>
+            </div>
+          </div>
+
+          <a href="/downloads/example_import.xlsx" download class="btn btn-secondary btn-block" style="margin-top: var(--space-5);">
+            ⬇ Download Example .xlsx
+          </a>
+        </section>
+
+        <section class="admin-section-card form-panel import-panel">
+          <div class="section-heading">
+            <span class="admin-kicker">Upload file</span>
+            <h2>Import Questions</h2>
+            <p class="form-hint">Choose the spreadsheet and begin the import process.</p>
+          </div>
+
+          <div id="alert" aria-live="polite"></div>
+
+          <form id="importForm">
+            <div class="form-group">
+              <label for="file">Excel File</label>
+              <input type="file" id="file" accept=".xlsx,.xls" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Import Questions</button>
+          </form>
+        </section>
+      </div>
+
+      <section id="summary" class="import-summary hidden" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <script src="/admin/js/admin-api.js"></script>
+  <script src="/admin/js/import.js"></script>
+</body>
+</html>

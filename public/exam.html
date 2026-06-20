@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exam - ExamRank Portal</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="exam-mode">
+
+  <!-- ── Fullscreen prompt overlay (shown before exam starts) ── -->
+  <div id="fsPromptOverlay" class="fs-overlay">
+    <div class="fs-prompt-card">
+      <div class="fs-prompt-icon">⛶</div>
+      <h2>Fullscreen Required</h2>
+      <p>This exam must be taken in fullscreen mode. Exiting fullscreen, switching tabs, or resizing the window will be recorded as a violation.</p>
+      <ul class="fs-rules">
+        <li>🚫 Do not switch tabs or windows</li>
+        <li>🚫 Do not exit fullscreen</li>
+        <li>🚫 Do not resize the browser window</li>
+        <li>⚠️ 3 violations = automatic exam submission</li>
+      </ul>
+      <button id="enterFsBtn" class="btn btn-primary btn-block">Enter Fullscreen &amp; Start Exam</button>
+    </div>
+  </div>
+
+  <!-- ── Violation warning banner (shown on each violation) ── -->
+  <div id="violationBanner" class="violation-banner hidden">
+    <span id="violationMsg">⚠️ Warning: Tab switch detected!</span>
+    <span id="violationCount" class="violation-count"></span>
+  </div>
+
+  <!-- ── Auto-submit countdown overlay (on final violation) ── -->
+  <div id="autoSubmitOverlay" class="fs-overlay hidden">
+    <div class="fs-prompt-card fs-prompt-card--danger">
+      <div class="fs-prompt-icon">🚨</div>
+      <h2>Exam Auto-Submitting</h2>
+      <p id="autoSubmitMsg">You have violated exam rules 3 times. Your exam is being submitted automatically.</p>
+      <div class="auto-submit-timer" id="autoSubmitTimer">3</div>
+    </div>
+  </div>
+
+  <header class="exam-topbar exam-topbar-premium">
+    <div class="exam-topbar-main">
+      <div class="exam-heading">
+        <span class="section-kicker">Active attempt</span>
+        <h1 id="examTitle">Exam</h1>
+        <span id="examProgress" class="exam-progress-pill">Q 1/1</span>
+      </div>
+      <div class="exam-timer-wrap">
+        <span class="timer-label">Time Remaining</span>
+        <div class="exam-timer" id="timerDisplay">00:00</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="exam-layout">
+    <aside class="exam-sidebar exam-sidebar-premium">
+      <div class="exam-sidebar-head">
+        <h3>Question Map</h3>
+        <p>Move quickly between items and keep track of progress.</p>
+      </div>
+      <div id="questionNav" class="question-nav"></div>
+    </aside>
+
+    <main class="exam-main exam-main-premium">
+      <div id="alert" aria-live="polite"></div>
+
+      <section class="question-shell">
+        <div id="questionArea" class="question-area"></div>
+      </section>
+
+      <div class="exam-controls exam-controls-premium">
+        <button class="btn btn-secondary" id="prevBtn">Previous</button>
+        <button class="btn btn-secondary" id="markBtn">Mark for Review</button>
+        <button class="btn btn-secondary" id="nextBtn">Next</button>
+        <button class="btn btn-primary" id="submitBtn">Submit Exam</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- ── Submit confirmation modal (in-page, fullscreen-safe) ── -->
+  <div id="submitConfirmOverlay" class="fs-overlay hidden">
+    <div class="fs-prompt-card">
+      <div class="fs-prompt-icon">📤</div>
+      <h2>Submit Exam?</h2>
+      <p id="submitConfirmMsg">Unanswered questions will be marked incorrect. This action cannot be undone.</p>
+      <div class="exam-controls" style="justify-content: center;">
+        <button id="cancelSubmitBtn" class="btn btn-secondary">Cancel</button>
+        <button id="confirmSubmitBtn" class="btn btn-primary">Yes, Submit</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/student-api.js"></script>
+  <script src="/js/exam.js"></script>
+</body>
+</html>

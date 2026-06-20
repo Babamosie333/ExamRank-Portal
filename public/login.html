@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExamRank Portal - Login</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="auth-page">
+  <a class="skip-link" href="#authMain">Skip to content</a>
+
+  <main class="auth-shell" id="authMain">
+    <section class="auth-showcase" aria-labelledby="authTitle">
+      <div class="auth-showcase-inner">
+        <a href="/" class="brand brand-link" aria-label="Online Exam Portal home">
+          <span class="brand-mark">ER</span>
+          <span class="brand-copy">
+            <strong class="brand-text">ExamRank Portal</strong>
+            <span class="brand-subtext">Secure student access</span>
+          </span>
+        </a>
+
+        <div class="auth-copy">
+          <span class="eyebrow">Student verification</span>
+          <h1 id="authTitle">A faster sign-in flow with a cleaner first impression.</h1>
+          <p>
+            Register with your name and email, receive a one-time password, and enter the student dashboard without a bulky signup experience.
+          </p>
+        </div>
+
+        <div class="auth-benefit-list" aria-label="Benefits">
+          <article class="auth-benefit">
+            <strong>Email OTP access</strong>
+            <span>Quick verification without password friction.</span>
+          </article>
+          <article class="auth-benefit">
+            <strong>Result-ready dashboard</strong>
+            <span>Move directly from verification to subjects and tests.</span>
+          </article>
+          <article class="auth-benefit">
+            <strong>Professional flow</strong>
+            <span>Built to feel more like a real product than a basic form page.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-panel-section" aria-label="Authentication form">
+      <div class="auth-card auth-card-premium">
+        <div class="auth-card-head">
+          <span class="section-kicker">Student access</span>
+          <h2>Register or verify OTP</h2>
+          <p>Use the same email address during registration and verification.</p>
+        </div>
+
+        <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+          <button type="button" class="auth-tab active" role="tab" aria-selected="true" aria-controls="registerForm" id="registerTab" data-tab="register">Register</button>
+          <button type="button" class="auth-tab" role="tab" aria-selected="false" aria-controls="verifyForm" id="verifyTab" data-tab="verify">Verify OTP</button>
+        </div>
+
+        <div id="alert" aria-live="polite"></div>
+
+        <form id="registerForm" class="auth-form" role="tabpanel" aria-labelledby="registerTab">
+          <div class="form-group">
+            <label for="regName">Full Name</label>
+            <input type="text" id="regName" required autocomplete="name" placeholder="Enter your full name" />
+          </div>
+
+          <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <input type="email" id="regEmail" required placeholder="you@example.com" autocomplete="email" />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Send OTP</button>
+        </form>
+
+        <form id="verifyForm" class="auth-form hidden">
+          <div class="form-group">
+            <label for="verifyEmail">Email Address</label>
+            <input type="email" id="verifyEmail" required placeholder="you@example.com" autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label for="verifyOtp">OTP Code</label>
+            <input type="text" id="verifyOtp" required inputmode="numeric" autocomplete="one-time-code" placeholder="Enter 6-digit OTP" />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Verify & Login</button>
+          <button type="button" class="btn btn-secondary btn-block" id="resendBtn">Resend OTP</button>
+        </form>
+
+        <div class="auth-footer-row">
+          <a href="/" class="text-link">← Back to home</a>
+          <a href="/tests.html" class="text-link">View tests</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/student-api.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

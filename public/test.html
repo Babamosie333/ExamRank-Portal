@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Start your MCQ test in a refined timed exam interface." />
+  <title>Take Test</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="test-runner-page">
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
+  <header class="hero-shell hero-shell-compact" role="banner">
+    <div class="container">
+      <nav class="topbar" aria-label="Primary navigation">
+        <a href="/" class="brand brand-link" aria-label="Test Platform home">
+          <span class="brand-mark">ER</span>
+          <span class="brand-copy">
+            <strong class="brand-text">ExamRank Portal</strong>
+            <span class="brand-subtext">Timed test access</span>
+          </span>
+        </a>
+
+        <div class="topbar-links">
+          <a href="/tests.html">Browse Tests</a>
+          <a href="/">Home</a>
+        </div>
+      </nav>
+
+      <section class="hero hero-split hero-split-compact" aria-labelledby="testPageTitle">
+        <div class="hero-content">
+          <div class="eyebrow">Timed exam</div>
+          <h1 id="testPageTitle">Start your test in a cleaner exam flow.</h1>
+          <p class="hero-text" id="testMeta">
+            Enter your details below and begin the test in a distraction-free layout with visible timing and instant submission flow.
+          </p>
+        </div>
+
+        <aside class="hero-stage hero-stage-compact" aria-label="Exam tips">
+          <div class="hero-stage-card stage-primary">
+            <div class="stage-top">
+              <span class="stage-chip">Before you begin</span>
+              <span class="stage-pill">Checklist</span>
+            </div>
+            <div class="stage-stack">
+              <div class="stage-line"><strong>1.</strong><span>Enter your correct details.</span></div>
+              <div class="stage-line"><strong>2.</strong><span>Read each question carefully.</span></div>
+              <div class="stage-line"><strong>3.</strong><span>Submit before time ends.</span></div>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </div>
+  </header>
+
+  <div id="timerBar" class="timer-bar hidden" aria-live="polite">
+    <span>Time left: <span id="timerDisplay">--:--</span></span>
+    <button class="btn btn-secondary btn-sm" id="submitBtn" type="button">Submit Test</button>
+  </div>
+
+  <main id="mainContent" class="container app-main">
+    <div id="alert" aria-live="polite"></div>
+
+    <section id="startSection" class="form-panel form-panel-premium" aria-labelledby="startTitle">
+      <div class="section-heading">
+        <span class="section-kicker">Student details</span>
+        <h2 id="startTitle">Enter your details</h2>
+        <p>Use accurate information so your test attempt and result record remain correct.</p>
+      </div>
+
+      <form id="startForm">
+        <div class="form-group">
+          <label for="studentName">Your Name</label>
+          <input type="text" id="studentName" name="studentName" required autocomplete="name" placeholder="Enter your full name" />
+        </div>
+
+        <div class="form-group">
+          <label for="studentMobile">Mobile Number</label>
+          <input
+            type="tel"
+            id="studentMobile"
+            name="studentMobile"
+            required
+            pattern="[0-9+\-\s]{8,15}"
+            autocomplete="tel"
+            placeholder="Enter your mobile number"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Start Test</button>
+      </form>
+
+      <p class="inline-back-link">
+        <a href="/tests.html">← Back to tests</a>
+      </p>
+    </section>
+
+    <section id="examSection" class="hidden" aria-labelledby="questionsTitle">
+      <div class="section-heading">
+        <span class="section-kicker">Question set</span>
+        <h2 id="questionsTitle">Questions</h2>
+        <p>Answer each question carefully and submit your test before the timer expires.</p>
+      </div>
+
+      <div id="questionsContainer"></div>
+
+      <button class="btn btn-primary btn-block" id="submitBtnBottom" type="button">
+        Submit Test
+      </button>
+    </section>
+  </main>
+
+  <script src="/js/student-api.js"></script>
+  <script src="/js/test-runner.js"></script>
+</body>
+</html>

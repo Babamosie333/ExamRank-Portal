@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Result - Online Exam Portal</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="app-page">
+  <a class="skip-link" href="#mainContent">Skip to content</a>
+
+  <header class="portal-header portal-header-premium">
+    <div class="container portal-topbar">
+      <a href="/dashboard.html" class="brand brand-link" aria-label="Exam result">
+        <span class="brand-mark">ER</span>
+        <span class="brand-copy">
+          <strong class="brand-text">ExamRank Portal</strong>
+          <span class="brand-subtext">Result summary</span>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container app-main" id="mainContent">
+    <section class="page-hero page-hero-result">
+      <div class="page-hero-copy">
+        <span class="section-kicker">Performance review</span>
+        <h1>Exam Result</h1>
+        <p>Your score summary and answer review appear below in a structured format.</p>
+      </div>
+    </section>
+
+    <div id="alert" aria-live="polite"></div>
+
+    <section id="resultSummary" class="result-summary"></section>
+
+    <section class="content-shell" aria-labelledby="answerReviewTitle">
+      <div class="section-heading section-heading-row">
+        <div>
+          <span class="section-kicker">Answer breakdown</span>
+          <h2 id="answerReviewTitle">Detailed review</h2>
+        </div>
+      </div>
+      <section id="answerReview" class="answer-review"></section>
+    </section>
+
+    <div class="result-actions">
+      <a href="/dashboard.html" class="btn btn-primary">Go Back to Dashboard</a>
+      <a href="/history.html" class="btn btn-secondary">My Results</a>
+    </div>
+  </main>
+
+  <script src="/js/student-api.js"></script>
+  <script src="/js/result.js"></script>
+</body>
+</html>

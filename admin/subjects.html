@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manage subjects in the admin panel." />
+  <title>Subjects - Admin</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-app">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-head">
+        <a href="/admin/dashboard.html" class="admin-brand admin-brand-link">
+          <span class="admin-brand-mark">OE</span>
+          <span class="admin-brand-stack">
+            <strong>Admin Panel</strong>
+            <span>Exam operations</span>
+          </span>
+        </a>
+      </div>
+
+      <nav aria-label="Admin navigation" class="admin-nav">
+        <a href="/admin/dashboard.html">Dashboard</a>
+        <a href="/admin/subjects.html" class="active">Subjects</a>
+        <a href="/admin/tests.html">Tests</a>
+        <a href="/admin/questions.html">Questions</a>
+        <a href="/admin/import.html">Excel Import</a>
+        <a href="/admin/results.html">Results</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <p class="page-subtitle">Subject management</p>
+          <h1>Subjects</h1>
+        </div>
+
+        <button class="btn btn-primary" id="addBtn">Add Subject</button>
+      </header>
+
+      <section class="admin-page-hero admin-page-hero-tight">
+        <div class="admin-page-hero-copy">
+          <span class="admin-kicker">Content structure</span>
+          <h2>Organize the subject layer of your exam system.</h2>
+          <p>Subjects act as the top-level structure for tests and question grouping across the platform.</p>
+        </div>
+      </section>
+
+      <div id="alert" aria-live="polite"></div>
+
+      <section class="admin-section-card" aria-labelledby="subjectsTableTitle">
+        <div class="section-heading section-heading-row">
+          <div>
+            <span class="admin-kicker">Subject registry</span>
+            <h2 id="subjectsTableTitle">All subjects</h2>
+          </div>
+          <p>Create, edit, activate, or manage the subject list used across tests.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <span class="admin-kicker">Subject editor</span>
+          <h3 id="modalTitle">Add Subject</h3>
+        </div>
+        <button type="button" class="modal-close" id="cancelBtn" aria-label="Close modal">×</button>
+      </div>
+
+      <form id="subjectForm">
+        <input type="hidden" id="subjectId" />
+
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" required placeholder="Enter subject name" />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" rows="3" placeholder="Optional subject description"></textarea>
+        </div>
+
+        <div class="modal-grid">
+          <div class="form-group">
+            <label for="icon">Icon (emoji)</label>
+            <input type="text" id="icon" value="📚" />
+          </div>
+
+          <div class="form-group">
+            <label for="color">Color</label>
+            <input type="color" id="color" value="#4f46e5" />
+          </div>
+        </div>
+
+        <div class="form-group checkbox-group">
+          <label for="isActive">
+            <input type="checkbox" id="isActive" checked />
+            Active
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="cancelBtnBottom">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/admin/js/admin-api.js"></script>
+  <script src="/admin/js/subjects.js"></script>
+</body>
+</html>

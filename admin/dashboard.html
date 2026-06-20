@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Admin dashboard for Online Exam Portal." />
+  <title>Dashboard - Admin</title>
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin-app">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-head">
+        <a href="/admin/dashboard.html" class="admin-brand admin-brand-link">
+          <span class="admin-brand-mark">OE</span>
+          <span class="admin-brand-stack">
+            <strong>Admin Panel</strong>
+            <span>Exam operations</span>
+          </span>
+        </a>
+      </div>
+
+      <nav aria-label="Admin navigation" class="admin-nav">
+        <a href="/admin/dashboard.html" class="active">Dashboard</a>
+        <a href="/admin/subjects.html">Subjects</a>
+        <a href="/admin/tests.html">Tests</a>
+        <a href="/admin/questions.html">Questions</a>
+        <a href="/admin/import.html">Excel Import</a>
+        <a href="/admin/results.html">Results</a>
+        <a href="/" target="_blank" rel="noopener noreferrer">Student Site</a>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <p class="page-subtitle">Overview and recent platform activity</p>
+          <h1>Dashboard</h1>
+        </div>
+
+        <div class="admin-actions">
+          <span id="adminUser" class="admin-user"></span>
+          <button class="btn btn-secondary btn-sm" id="logoutBtn">Logout</button>
+        </div>
+      </header>
+
+      <section class="admin-page-hero">
+        <div class="admin-page-hero-copy">
+          <span class="admin-kicker">Control center</span>
+          <h2>Track platform activity at a glance.</h2>
+          <p>Use this space to monitor overall usage, recent results, and the current health of your exam content.</p>
+        </div>
+
+        <div class="admin-page-hero-side">
+          <div class="admin-micro-card">
+            <span class="micro-label">Workspace mode</span>
+            <strong>Operations overview</strong>
+            <p>High-level metrics appear first so the most important numbers stay easy to scan.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-grid" id="statsGrid" aria-label="Dashboard metrics"></section>
+
+      <section class="admin-section-card" aria-labelledby="recentResultsTitle">
+        <div class="section-heading section-heading-row">
+          <div>
+            <span class="admin-kicker">Activity feed</span>
+            <h2 id="recentResultsTitle">Recent Results</h2>
+          </div>
+          <p>Latest student submissions across the platform.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table" id="recentTable">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Chapter</th>
+                <th>Score</th>
+                <th>Pass/Fail</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/admin/js/admin-api.js"></script>
+  <script src="/admin/js/dashboard.js"></script>
+</body>
+</html>
